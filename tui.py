@@ -28,7 +28,7 @@ def progress(operation, value):
         print(f"{operation} has completed")
 
 
-def menu(variant=0):
+def menu(variant):
     print("Please choose one of the available options:\n")
 
     if variant is None or variant == 0:
@@ -94,8 +94,7 @@ def total_records(num_records):
     :param num_records: the total number of movies in the data set
     :return: Does not return anything
     """
-    # TODO: Your code here
-    pass
+    print(f"There are {num_records} records in the data set.")
 
 
 def serial_number():
