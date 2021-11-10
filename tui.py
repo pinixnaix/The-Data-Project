@@ -82,32 +82,14 @@ def menu(variant):
 
 
 def total_records(num_records):
-    f"""
-    Task 5: Display the total number of records in the data set.
-    
-    The function should display a message in the following format:
 
-    "There are {num_records} records in the data set."
-
-    Where {num_records} is the value of the parameter passed to this function
-    
-    :param num_records: the total number of movies in the data set
-    :return: Does not return anything
-    """
     print(f"There are {num_records} records in the data set.")
 
 
 def serial_number():
-    """
-    Task 6: Read in the serial number of a record and return the serial number.
 
-    The function should ask the user to enter a serial number for a record e.g. 189
-    The function should then read in and return the user's response as an integer.
-
-    :return: the serial number for a record
-    """
-    # TODO: Your code here
-    pass
+    print("Please enter a serial number for a record")
+    return int(input())
 
 
 def observation_dates():
