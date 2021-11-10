@@ -103,8 +103,9 @@ def observation_dates():
 
     :return: a list of observation dates
     """
-    # TODO: Your code here
-    pass
+    print("Please enter some observations dates")
+    print("This should be entered in the format dd/mm/yyyy")
+    return [input()]
 
 
 def display_record(record, cols=None):
