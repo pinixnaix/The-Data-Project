@@ -29,37 +29,56 @@ def progress(operation, value):
 
 
 def menu(variant=0):
-    """
-    Task 4: Display a menu of options and read the user's response.
+    print("Please choose one of the available options:\n")
 
-    If no value or a zero is supplied for the parameter 'variant' then a menu with the following options
-    should be displayed:
+    if variant is None or variant == 0:
+        choices = [1, 2, 3, 4]
+        print("[1] Process Data")
+        print("[2] Visualise Data")
+        print("[3] Export Data")
+        print("[4] Exit")
+        option = int(input())
+        if option in choices:
+            return option
+        else:
+            error("Wrong Option!!!!!")
+            return None
 
-    '[1] Process Data', '[2] Visualise Data', '[3] Export Data' and '[4] Exit'
+    elif variant == 1:
+        choices = [1, 2, 3, 4]
+        print("[1] Record by Serial Number")
+        print("[2] Records by Observation Date")
+        print("[3] Group Records by Country/Region")
+        print("[4] Summarise Records")
+        option = int(input())
+        if option in choices:
+            return option
+        else:
+            error("Wrong Option!!!!!")
+            return None
 
-    If the value of the parameter 'variant' is 1 then a menu with the following options should be displayed:
+    elif variant == 2:
+        choices = [1, 2, 3]
+        print("[1] Country/Region Pie Chart")
+        print("[2] Observations Chart")
+        print("[3] Animated Summary")
+        option = int(input())
+        if option in choices:
+            return option
+        else:
+            error("Wrong Option!!!!!")
+            return None
 
-    '[1] Record by Serial Number', '[2] Records by Observation Date', '[3] Group Records by Country/Region,
-    '[4] Summarise Records'
-
-    If the value of the parameter 'variant' is 2 then a menu with the following options should be displayed:
-
-    '[1] Country/Region Pie Chart', '[2] Observations Chart', '[3] Animated Summary'
-
-    If the value of the parameter 'variant' is 3 then a menu with the following options should be displayed:
-
-    '[1] All Data', '[2] Data for Specific Country/Region'
-
-    In each of the above cases, the user's response should be read in and returned as an integer
-    corresponding to the selected option.
-    E.g. 1 for 'Process Data', 2 for 'Visualise Data' and so on.
-
-    If the user enters a invalid option then a suitable error message should be displayed
-
-    :return: nothing if invalid selection otherwise an integer for a valid selection
-    """
-    # TODO: Your code here
-    pass
+    elif variant == 3:
+        choices = [1, 2]
+        print("[1] All Data")
+        print("[2] Data for Specific Country/Region")
+        option = int(input())
+        if option in choices:
+            return option
+        else:
+            error("Wrong Option!!!!!")
+            return None
 
 
 def total_records(num_records):
