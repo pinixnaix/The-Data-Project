@@ -20,25 +20,12 @@ def error(msg):
 
 
 def progress(operation, value):
-    """
-    Task 3: Display a message to indicate the progress of an operation.
-
-    The function should display a message in the following format:
-    '{operation} {status}.'
-
-    Where {operation} is the value of the parameter passed to this function
-    and
-    {status} is 'has started' if the value of the parameter 'value' is 0
-    {status} is 'is in progress ({value}% completed)' if the value of the parameter 'value' is between,
-    but not including, 0 and 100
-    {status} is 'has completed' if the value of the parameter 'value' is 100
-
-    :param operation: a string indicating the operation being started
-    :param value: an integer indicating the amount of progress made
-    :return: does not return anything
-    """
-    # TODO: Your code here
-    pass
+    if value == 0:
+        print(f"{operation} has started")
+    elif 0 < value < 100:
+        print(f"{operation} is in progress {value}% completed")
+    elif value == 100:
+        print(f"{operation} has completed")
 
 
 def menu(variant=0):
