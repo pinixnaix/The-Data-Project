@@ -9,15 +9,6 @@ Please note that you do not need to read the data file or perform any other such
 
 
 def welcome():
-    """
-    Task 1: Display a welcome message.
-
-    The welcome message should display the title 'COVID-19 (January) Data'.
-    The welcome message should contain dashes above and below the title.
-    The number of dashes should be equivalent to the number of characters in the title.
-
-    :return: Does not return anything.
-    """
     message = "COVID-19 (January) Data"
     print('*' * len(message))
     print(message)
@@ -25,18 +16,7 @@ def welcome():
 
 
 def error(msg):
-    """
-    Task 2: Display an error message.
-
-    The function should display a message in the following format:
-    'Error! {error_msg}.'
-    Where {error_msg} is the value of the parameter 'msg' passed to this function
-
-    :param msg: a string containing an error message
-    :return: does not return anything
-    """
-    # TODO: Your code here
-    pass
+    print(f"Error! {msg}")
 
 
 def progress(operation, value):
