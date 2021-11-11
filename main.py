@@ -44,8 +44,12 @@ def run():
         # Task 14: Using the appropriate function in the module 'tui', display a menu of options
         # for the different operations that can be performed on the data (menu variant 0).
         # Assign the selected option to a suitable local variable
-        # TODO: Your code here
+        option = tui.menu()
 
+        if option == 1:
+            tui.progress("Data processing", 0)
+            tui.menu(1)
+            tui.progress("Data processing", 100)
         # Task 15: Check if the user selected the option for processing data.  If so, then do the following:
         # - Use the appropriate function in the module tui to display a message to indicate that the data processing
         # operation has started.
