@@ -25,4 +25,20 @@ The required functions are as follows:
  
 """
 
-# TODO: Your code here
+
+def retrieve_record_serial_number(records, serial):
+    for rec in records:
+        if str(serial) == rec[0]:
+            record = rec
+
+    return record
+
+
+def retrieve_records_obs_dates(records, obs_dates):
+    total_records = None
+    for date in obs_dates:
+        for record in records:
+            if date == record[1]:
+                total_records = record
+    return total_records
+

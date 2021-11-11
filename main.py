@@ -38,7 +38,7 @@ def run():
             path = input("Please enter the correct path for the file")
 
     tui.total_records(len(covid_records))
-    tui.progress('Data loading, 100')
+    tui.progress('Data loading', 100)
 
     while True:
         # Task 14: Using the appropriate function in the module 'tui', display a menu of options
@@ -46,54 +46,39 @@ def run():
         # Assign the selected option to a suitable local variable
         option = tui.menu()
 
-        if option == 1:
+        if option == '1':
             tui.progress("Data processing", 0)
-            tui.menu(1)
+            variant1 = tui.menu(1)
+
+            if variant1 == 1:
+                tui.progress("Record retrieval", 0)
+                serial = tui.serial_number()
+                record = process.retrieve_record_serial_number(covid_records, serial)
+                tui.display_record(record)
+                tui.progress("Record retrieval", 100)
+
+            elif variant1 == 2:
+                tui.progress("Records retrieval", 0)
+                obs_dates = tui.observation_dates()
+                records = process.retrieve_records_obs_dates(covid_records, obs_dates)
+                tui.display_records(records)
+                tui.progress("Records retrieval", 100)
+
+            elif variant1 == 3:
+                tui.progress("Grouping process", 0)
+                records = process.retrieve_records_country_region(covid_records)
+                tui.display_records(records)
+                tui.progress("Grouping process", 100)
+
+            elif variant1 == 4:
+                tui.progress("Summary process", 0)
+                records = process.retrieve_records_summary(covid_records)
+                tui.display_records(records)
+                tui.progress("summary process", 100)
+
             tui.progress("Data processing", 100)
-        # Task 15: Check if the user selected the option for processing data.  If so, then do the following:
-        # - Use the appropriate function in the module tui to display a message to indicate that the data processing
-        # operation has started.
-        # - Process the data (see below).
-        # - Use the appropriate function in the module tui to display a message to indicate that the data processing
-        # operation has completed.
-        #
-        # To process the data, do the following:
-        # - Use the appropriate function in the module 'tui' to display a menu of options for processing the data
-        # (menu variant 1).
-        # - Check what option has been selected
-        #
-        #   - If the user selected the option to retrieve an individual record by serial number then
-        #       - Use the appropriate function in the module 'tui' to indicate that the record retrieval process
-        #       has started.
-        #       - Use the appropriate function in the module 'process' to retrieve the record and then appropriately
-        #       display it.
-        #       - Use the appropriate function in the module 'tui' to indicate that the record retrieval process has
-        #       completed.
-        #
-        #   - If the user selected the option to retrieve (multiple) records by observation dates then
-        #       - Use the appropriate function in the module 'tui' to indicate that the records retrieval
-        #       process has started.
-        #       - Use the appropriate function in the module 'process' to retrieve records with
-        #       - Use the appropriate function in the module 'tui' to display the retrieved records.
-        #       - Use the appropriate function in the module 'tui' to indicate that the records retrieval
-        #       process has completed.
-        #
-        #   - If the user selected the option to group records by country/region then
-        #       - Use the appropriate function in the module 'tui' to indicate that the grouping
-        #       process has started.
-        #       - Use the appropriate function in the module 'process' to group the records
-        #       - Use the appropriate function in the module 'tui' to display the groupings.
-        #       - Use the appropriate function in the module 'tui' to indicate that the grouping
-        #       process has completed.
-        #
-        #   - If the user selected the option to summarise the records then
-        #       - Use the appropriate function in the module 'tui' to indicate that the summary
-        #       process has started.
-        #       - Use the appropriate function in the module 'process' to summarise the records.
-        #       - Use the appropriate function in the module 'tui' to display the summary
-        #       - Use the appropriate function in the module 'tui' to indicate that the summary
-        #       process has completed.
-        # TODO: Your code here
+
+
 
         # Task 21: Check if the user selected the option for visualising data.
         # If so, then do the following:
@@ -119,15 +104,11 @@ def run():
         # You should use these to write the records (either all or only those for a specific country/region) to a JSON file.
         # TODO: Your code here
 
-        # Task 26: Check if the user selected the option for exiting the program.
-        # If so, then break out of the loop
-        # TODO: Your code here
+        elif option == 4:
+            break
 
-        # Task 27: If the user selected an invalid option then use the appropriate function of the
-        # module tui to display an error message
-        # TODO: Your code here
-
-        pass  # can remove
+        else:
+            tui.error("Wrong option!! Try again")
 
 
 if __name__ == "__main__":

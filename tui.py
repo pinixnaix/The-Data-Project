@@ -37,7 +37,7 @@ def menu(variant=None):
         print("[2] Visualise Data")
         print("[3] Export Data")
         print("[4] Exit")
-        option = int(input())
+        option = input()
         if option in choices:
             return option
         else:
@@ -104,7 +104,7 @@ def observation_dates():
 
 
 def display_record(record, cols=None):
-    if len(cols) == 0 or cols is None:
+    if cols is None or len(cols) == 0:
         print(record)
 
     elif len(cols) > 0:
@@ -117,7 +117,7 @@ def display_record(record, cols=None):
 
 
 def display_records(records, cols=None):
-    if len(cols) == 0 or cols is None:
+    if cols is None or len(cols) == 0:
         for index in records:
             print(records[index])
 
