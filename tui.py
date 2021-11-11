@@ -91,19 +91,16 @@ def serial_number():
 
 
 def observation_dates():
-    """
-    Task 7: Read in and return a list of observation dates.
 
-    The function should ask the user to enter some observation dates
-    This should be entered in the format dd/mm/yyyy where dd is two-digit day, mm is two digit month and yyyy is
-    a four digit year e.g. 01/22/2020
-    The function should return a list containing the specified observation dates.
+    print("How many observation dates do you want to enter?")
+    ob_dates = []
+    for obs in range(input()):
+        print("Please enter some observations dates")
+        print("This should be entered in the format dd/mm/yyyy")
+        print("dd is two-digit day, mm is two digit month and yyyy is a four digit year")
+        ob_dates.append(input())
 
-    :return: a list of observation dates
-    """
-    print("Please enter some observations dates")
-    print("This should be entered in the format dd/mm/yyyy")
-    return [input()]
+    return ob_dates
 
 
 def display_record(record, cols=None):
