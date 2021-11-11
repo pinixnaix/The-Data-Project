@@ -28,7 +28,7 @@ def progress(operation, value):
         print(f"{operation} has completed")
 
 
-def menu(variant):
+def menu(variant=None):
     print("Please choose one of the available options:\n")
 
     if variant is None or variant == 0:
@@ -119,7 +119,7 @@ def display_record(record, cols=None):
         print(value)
 
 
-def display_records(records, cols):
+def display_records(records, cols=None):
     if len(cols) == 0 or cols is None:
         for index in records:
             print(records[index])
