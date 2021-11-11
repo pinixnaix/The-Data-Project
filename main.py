@@ -17,18 +17,21 @@ covid_records = []
 
 
 def run():
-    # Call the function welcome of the module 'tui'.
-    # This will display our welcome message when the program is executed.
     tui.welcome()
 
-    # Task 13: Load the data.
-    # - Use the appropriate function in the module 'tui' to display a message to indicate that the data loading
-    # operation has started.
-    # - Load the data. Each line in the file should be a record in the list 'covid_records'.
+    tui.progress('Data loading', 0)
+    try:
+        with open('data/covid_19_data.csv') as file:
+            csv_reader = csv.reader(file)
+            next(csv_reader)
+            for line in csv_reader:
+                covid_records.append(line)
+    except FileNotFoundError:
+        tui.error("File not Found!!")
     # You should appropriately handle the case where the file cannot be found or loaded.
-    # - Use the appropriate functions in the module 'tui' to display a message to indicate how many records have
-    # been loaded and that the data loading operation has completed.
-    # TODO: Your code here
+
+    tui.total_records(len(covid_records))
+    tui.progress('Data loading, 100')
 
     while True:
         # Task 14: Using the appropriate function in the module 'tui', display a menu of options
