@@ -20,15 +20,22 @@ def run():
     tui.welcome()
 
     tui.progress('Data loading', 0)
-    try:
-        with open('data/covid_19_data.csv') as file:
-            csv_reader = csv.reader(file)
-            next(csv_reader)
-            for line in csv_reader:
-                covid_records.append(line)
-    except FileNotFoundError:
-        tui.error("File not Found!!")
-    # You should appropriately handle the case where the file cannot be found or loaded.
+    path = "data/covid_19_data.csv"
+    while True:
+        try:
+            with open(path) as file:
+                csv_reader = csv.reader(file)
+                next(csv_reader)
+                for line in csv_reader:
+                    covid_records.append(line)
+            break
+
+        except FileNotFoundError:
+            tui.error("File not Found!!")
+            path = input("Please enter the correct path for the file")
+        except StopIteration:
+            tui.error("File is empty!!")
+            path = input("Please enter the correct path for the file")
 
     tui.total_records(len(covid_records))
     tui.progress('Data loading, 100')
@@ -94,7 +101,7 @@ def run():
         # - Use the appropriate function in the module 'tui' to display a message to indicate that the
         # data visualisation operation has completed.
         # TODO: Your code here
-        
+
         # Task 25: Check if the user selected the option for exporting data.  If so, then do the following:
         # - Use the appropriate function in the module 'tui' to retrieve the type of data to be exported.
         # - Check what option has been selected
