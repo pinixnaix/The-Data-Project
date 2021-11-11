@@ -46,7 +46,7 @@ def run():
         # Assign the selected option to a suitable local variable
         option = tui.menu()
 
-        if option == '1':
+        if option == 1:
             tui.progress("Data processing", 0)
             variant1 = tui.menu(1)
 
@@ -108,7 +108,7 @@ def run():
             break
 
         else:
-            tui.error("Wrong option!! Try again")
+            tui.error(" Try again!!")
 
 
 if __name__ == "__main__":

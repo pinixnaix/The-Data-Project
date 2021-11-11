@@ -37,7 +37,7 @@ def menu(variant=None):
         print("[2] Visualise Data")
         print("[3] Export Data")
         print("[4] Exit")
-        option = input()
+        option = int(input())
         if option in choices:
             return option
         else:
