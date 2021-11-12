@@ -24,21 +24,23 @@ The required functions are as follows:
 
  
 """
+import tui
 
 
-def retrieve_record_serial_number(records, serial):
+def retrieve_record_serial_number(records):
+    serial = tui.serial_number()
+    record = None
     for rec in records:
-        if str(serial) == rec[0]:
+        if serial == rec[0]:
             record = rec
-
     return record
 
 
-def retrieve_records_obs_dates(records, obs_dates):
+def retrieve_records_obs_dates(records):
     total_records = None
+    obs_dates = tui.observation_dates()
     for date in obs_dates:
         for record in records:
             if date == record[1]:
                 total_records = record
     return total_records
-

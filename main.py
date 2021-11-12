@@ -28,6 +28,11 @@ def run():
                 next(csv_reader)
                 for line in csv_reader:
                     covid_records.append(line)
+                for line in covid_records:
+                    line[0] = int(line[0])
+                    line[5] = int(line[5])
+                    line[6] = int(line[6])
+                    line[7] = int(line[7])
             break
 
         except FileNotFoundError:
@@ -50,15 +55,13 @@ def run():
 
             if variant1 == 1:
                 tui.progress("Record retrieval", 0)
-                serial = tui.serial_number()
-                record = process.retrieve_record_serial_number(covid_records, serial)
+                record = process.retrieve_record_serial_number(covid_records)
                 tui.display_record(record)
                 tui.progress("Record retrieval", 100)
 
             elif variant1 == 2:
                 tui.progress("Records retrieval", 0)
-                obs_dates = tui.observation_dates()
-                records = process.retrieve_records_obs_dates(covid_records, obs_dates)
+                records = process.retrieve_records_obs_dates(covid_records)
                 tui.display_records(records)
                 tui.progress("Records retrieval", 100)
 
