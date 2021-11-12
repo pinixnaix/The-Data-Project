@@ -44,3 +44,13 @@ def retrieve_records_obs_dates(records):
             if date == record[1]:
                 total_records = record
     return total_records
+
+
+def retrieve_records_country_region(records):
+    records_per_country = []
+    for record in records:
+        if record[3] not in records_per_country:
+            records_per_country.insert(f"{record[3]}", record)
+        else:
+            records_per_country[record[3]].extend(record)
+    return records_per_country
