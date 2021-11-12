@@ -41,9 +41,7 @@ def run():
     tui.progress('Data loading', 100)
 
     while True:
-        # Task 14: Using the appropriate function in the module 'tui', display a menu of options
-        # for the different operations that can be performed on the data (menu variant 0).
-        # Assign the selected option to a suitable local variable
+
         option = tui.menu()
 
         if option == 1:
@@ -78,7 +76,16 @@ def run():
 
             tui.progress("Data processing", 100)
 
-
+        elif option == 2:
+            tui.progress("Visualisation operation", 0)
+            variant2 = tui.menu(2)
+            if variant2 == 1:
+                visual.country_region_pie_chart(covid_records)
+            if variant2 == 2:
+                visual.observation_chart(covid_records)
+            if variant2 == 3:
+                visual.animated_summary(covid_records)
+            tui.progress("Visualisation operation", 100)
 
         # Task 21: Check if the user selected the option for visualising data.
         # If so, then do the following:
