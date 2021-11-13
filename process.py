@@ -52,6 +52,6 @@ def retrieve_records_country_region(records):
     for record in records:
         if record[3] not in records_dict:
             records_dict[record[3]] = []
-        
         records_dict[record[3]].append(record)
-    return records_per_country.append(records_dict)
+    records_per_country.append(records_dict)
+    return records_per_country

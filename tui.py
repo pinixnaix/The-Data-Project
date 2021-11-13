@@ -91,7 +91,6 @@ def serial_number():
 
 
 def observation_dates():
-
     print("How many observation dates do you want to enter?")
     ob_dates = []
     for obs in range(int(input())):
@@ -99,26 +98,22 @@ def observation_dates():
         print("This should be entered in the format dd/mm/yyyy")
         print("dd is two-digit day, mm is two digit month and yyyy is a four digit year")
         ob_dates.append(input())
-
     return ob_dates
 
 
 def display_record(record, cols=None):
     if cols is None or len(cols) == 0:
         print(record)
-
     elif len(cols) > 0:
         value = []
-
         for index in cols:
             value.append(record[index])
-
         print(value)
 
 
 def display_records(records, cols=None):
-   for index in records[0].keys():
-       print (index)
-       country = records[0][index]
-   for record in name:
-       display_record(record, cols)
+    for index in records[0].keys():
+        print(index)
+        country = records[0][index]
+        for record in country:
+            display_record(record, cols)
