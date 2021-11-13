@@ -48,10 +48,10 @@ def retrieve_records_obs_dates(records):
 
 def retrieve_records_country_region(records):
     records_per_country = []
+    records_dict = {}
     for record in records:
-        if record[3] not in records_per_country:
-            records_per_country.append(record[3])
-            records_per_country.insert(record[3], record)
-        else:
-            records_per_country[record[3]].extend(record)
-    return records_per_country
+        if record[3] not in records_dict:
+            records_dict[record[3]] = []
+        
+        records_dict[record[3]].append(record)
+    return records_per_country.append(records_dict)
