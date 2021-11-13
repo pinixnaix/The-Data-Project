@@ -117,10 +117,8 @@ def display_record(record, cols=None):
 
 
 def display_records(records, cols=None):
-    if cols is None or len(cols) == 0:
-        for index in records:
-            print(records[index])
-
-    elif len(cols) > 0:
-        for index in records:
-            display_record(records[index], cols)
+   for index in records[0].keys():
+       print (index)
+       country = records[0][index]
+   for record in name:
+       display_record(record, cols)
