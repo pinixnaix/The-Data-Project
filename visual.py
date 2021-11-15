@@ -12,5 +12,16 @@ time. This could focus on a specific country or countries.
 
 Each function should visualise the data using Matplotlib.
 """
+import matplotlib.pyplot as plt
 
-# TODO: Your code here
+
+def country_region_pie_chart():
+    pass
+
+
+def observation_chart():
+    pass
+
+
+def animated_summary():
+    pass
