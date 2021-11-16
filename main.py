@@ -42,7 +42,7 @@ def run():
             tui.error("File is empty!!")
             path = input("Please enter the correct path for the file")
 
-    tui.total_records(process.records_loaded(covid_records))
+    tui.total_records(len(covid_records))
     tui.progress('Data loading', 100)
 
     while True:
@@ -82,17 +82,18 @@ def run():
         elif option == 2:
             tui.progress("Visualisation operation", 0)
             variant2 = tui.menu(2)
+            records = process.retrieve_records_summary(covid_records)
             if variant2 == 1:
                 tui.progress("Visualisation pie chart", 0)
-                visual.country_region_pie_chart(covid_records)
+                visual.country_region_pie_chart(records)
                 tui.progress("Visualisation pie chart",100)
             if variant2 == 2:
                 tui.progress("Visualisation bar chart", 0)
-                visual.observation_chart(covid_records)
+                visual.observation_chart(records)
                 tui.progress("Visualisation bar chart", 100)
             if variant2 == 3:
                 tui.progress("Animated visualisation ", 0)
-                visual.animated_summary(covid_records)
+                visual.animated_summary(records)
                 tui.progress("Visualisation operation", 100)
             tui.progress("Animated visualisation", 100)
 
