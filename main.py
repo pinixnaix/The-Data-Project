@@ -97,17 +97,6 @@ def run():
                 tui.progress("Visualisation operation", 100)
             tui.progress("Animated visualisation", 100)
 
-        # Task 21: Check if the user selected the option for visualising data.
-        # If so, then do the following:
-        # - Use the appropriate function in the module 'tui' to indicate that the data visualisation operation
-        # has started.
-        # - Visualise the data by doing the following:
-        #   - call the appropriate function in the module 'tui' to determine what visualisation is to be done.
-        #   - call the appropriate function in the module 'visual'
-        # - Use the appropriate function in the module 'tui' to display a message to indicate that the
-        # data visualisation operation has completed.
-        # TODO: Your code here
-
         # Task 25: Check if the user selected the option for exporting data.  If so, then do the following:
         # - Use the appropriate function in the module 'tui' to retrieve the type of data to be exported.
         # - Check what option has been selected

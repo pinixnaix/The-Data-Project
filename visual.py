@@ -35,7 +35,14 @@ def observation_chart(records):
         conf = records[0][country]
         num_death.append(conf[1].get("deaths"))
 
-    plt.bar(countries, num_death)
+    # To sort the two lists together
+    index = list(range(len(num_death)))
+    index.sort(key=num_death.__getitem__)
+    index.reverse()
+    num_death[:] = [num_death[i] for i in index]
+    countries[:] = [countries[i] for i in index]
+
+    plt.bar(countries[:5], num_death[:5])
     plt.show()
 
 
