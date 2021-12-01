@@ -198,11 +198,12 @@ def observation_dates():
 
     print("How many observation dates do you want to enter?")
     ob_dates = []
+    number_dates = int(input())
     print("\nPlease enter some observations dates")
     print("This should be entered in the format mm/dd/yyyy")
     print(" mm is two digit month, dd is two-digit day and yyyy is a four digit year")
 
-    for obs in range(int(input())):
+    for obs in range(number_dates):
         ob_dates.append(input())
     return ob_dates
 
