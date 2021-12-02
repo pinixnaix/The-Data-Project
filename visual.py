@@ -3,6 +3,7 @@ This module is responsible for visualising the data using Matplotlib.
 """
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+from main import covid_records
 
 """
 Task 22 - 24: Write suitable functions to visualise the data as follows:
