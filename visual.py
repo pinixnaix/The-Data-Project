@@ -1,6 +1,8 @@
 """
 This module is responsible for visualising the data using Matplotlib.
 """
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 
 """
 Task 22 - 24: Write suitable functions to visualise the data as follows:
@@ -12,7 +14,6 @@ time. This could focus on a specific country or countries.
 
 Each function should visualise the data using Matplotlib.
 """
-import matplotlib.pyplot as plt
 
 
 def country_region_pie_chart(records):
@@ -47,4 +48,5 @@ def observation_chart(records):
 
 
 def animated_summary(records):
+
     pass
