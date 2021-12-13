@@ -58,7 +58,7 @@ def run():
             tui.error("File is empty!!")
             path = input("Please enter the correct path for the file")
 
-    tui.total_records(len(covid_records))
+    tui.total_records(process.records_loaded(covid_records))
     tui.progress('Data loading', 100)
 
     # Task 15: Check if the user selected the option for processing data.  If so, then do the following:

@@ -4,6 +4,7 @@ process it and return the desired result.
 """
 import tui
 
+
 """
 Task 16 - 20: Write suitable functions to process the data.
 
