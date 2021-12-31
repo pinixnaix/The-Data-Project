@@ -16,6 +16,8 @@ time. This could focus on a specific country or countries.
 Each function should visualise the data using Matplotlib.
 """
 
+fig, ax = plt.subplots()
+
 
 def country_region_pie_chart(records):
     countries = []
@@ -24,8 +26,19 @@ def country_region_pie_chart(records):
         countries.append(country)
         conf = records[0][country]
         num_confirmed.append(conf[0].get("confirmed"))
-    plt.pie(num_confirmed, labels=countries)
-    plt.legend(title="Covid-19 Confirmed cases per Country/Region")
+
+    # To sort the two lists together
+    index = list(range(len(num_confirmed)))
+    index.sort(key=num_confirmed.__getitem__)
+    index.reverse()
+    num_confirmed[:] = [num_confirmed[i] for i in index]
+    countries[:] = [countries[i] for i in index]
+
+    global ax
+    ax.pie(num_confirmed[:5], labels=countries[:5], explode=(0.5, 0, 0, 0, 0))
+    ax.set_title("Covid-19 Confirmed cases per Country/Region")
+    plt.legend(loc="upper right")
+    plt.tight_layout()
     plt.show()
 
 
@@ -43,12 +56,11 @@ def observation_chart(records):
     index.reverse()
     num_death[:] = [num_death[i] for i in index]
     countries[:] = [countries[i] for i in index]
-
-    plt.bar(countries[:5], num_death[:5])
+    global ax
+    ax.bar(countries[:5], num_death[:5])
+    ax.set_title("Top 5 Countries for number of deaths with Covid-19")
+    plt.tight_layout()
     plt.show()
-
-
-fig, ax = plt.subplots()
 
 
 def animate(frame):

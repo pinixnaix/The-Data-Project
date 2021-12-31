@@ -154,7 +154,7 @@ def run():
             if variant2 == 1:
                 tui.progress("Visualisation pie chart", 0)
                 visual.country_region_pie_chart(records)
-                tui.progress("Visualisation pie chart",100)
+                tui.progress("Visualisation pie chart", 100)
             if variant2 == 2:
                 tui.progress("Visualisation bar chart", 0)
                 visual.observation_chart(records)
