@@ -3,7 +3,9 @@ This module is responsible for visualising the data using Matplotlib.
 """
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-from main import covid_records
+
+import process
+import tui
 
 """
 Task 22 - 24: Write suitable functions to visualise the data as follows:
@@ -35,9 +37,13 @@ def country_region_pie_chart(records):
     countries[:] = [countries[i] for i in index]
 
     global ax
-    ax.pie(num_confirmed[:5], labels=countries[:5], explode=(0.5, 0, 0, 0, 0))
+    ax.pie(num_confirmed, labels=countries, autopct='%1.1f%%')
     ax.set_title("Covid-19 Confirmed cases per Country/Region")
     plt.legend(loc="upper right")
+    my_circle = plt.Circle((0, 0), 0.7, color='white')
+    p = plt.gcf()
+    p.gca().add_artist(my_circle)
+    ax.axis('equal')
     plt.tight_layout()
     plt.show()
 
@@ -63,15 +69,47 @@ def observation_chart(records):
     plt.show()
 
 
-def animate(frame):
-    global ax
-    ax.cla()
-    ax.set_xlim(0, 10)
-    ax.set_ylim(0, 10)
-    ax.plot(frame, frame, 'ro')
-
-
 def animated_summary(records):
-    global fig
-    simple_animation = animation.FuncAnimation(fig, animate, frames=10, interval=1000)
+    option = tui.menu(3)
+    values = []
+    data = ""
+    if option == 1:
+        values = process.retrieve_data_animation(records)
+
+    elif option == 2:
+        data = tui.country_region()
+        values = process.retrieve_data_animation(records, data)
+
+    x_date, y_confirmed, y_death, y_recovered = [], [], [], []
+    for index in values[0].keys():
+        x_date.append(index)
+        y_confirmed.append(values[0][index][0])
+        y_death.append(values[0][index][1])
+        y_recovered.append(values[0][index][2])
+    x, y1, y2, y3 = [], [], [], []
+
+    global fig, ax
+
+    def animate(frame):
+        x.append(x_date[frame])
+        y1.append(y_confirmed[frame])
+        y2.append(y_death[frame])
+        y3.append(y_recovered[frame])
+        ax.plot(x, y1, color='red', marker='o', label="Confirmed")
+        ax.plot(x, y2, color='black', marker='o', label="Deaths")
+        ax.plot(x, y3, color='green', marker='o', label="Recovered")
+        if len(x) == 1:
+            ax.legend(loc="upper left")
+
+    simple_animation = animation.FuncAnimation(fig, animate, frames=len(x_date), repeat=False, interval=1000)
+    if option == 1:
+        plt.title("Correlation of Covid-19 cases in the World")
+    elif option == 2:
+        plt.title(f"Correlation of Covid-19 cases in {str.upper(data)}")
+
+    plt.ylabel("Number of Covid-19 Cases", fontsize=18)
+    plt.xlabel("Date", fontsize=18)
+    plt.style.use("seaborn")
+    plt.tight_layout()
     plt.show()
+

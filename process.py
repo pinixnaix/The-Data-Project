@@ -41,14 +41,12 @@ def retrieve_record_serial_number(records):
     return record
 
 
-def retrieve_records_obs_dates(records):
+def retrieve_records_obs_dates(records, obs_dates):
     total_records = []
-    obs_dates = tui.observation_dates()
     for date in obs_dates:
         for record in records:
             if date == record[1]:
                 total_records.append(record)
-    print(len(total_records))
     return total_records
 
 
@@ -83,3 +81,30 @@ def retrieve_records_summary(records):
         records_dict.update({keys: stats})
     records_per_country.append(records_dict)
     return records_per_country
+
+
+def retrieve_data_animation(records, data=None):
+    records_animation = []
+    records_dict = {}
+    for record in records:
+        if str.lower(record[3]) == data:
+            if record[1] not in records_dict:
+                records_dict[record[1]] = []
+            records_dict[record[1]].append(record[5:])
+        elif data is None:
+            if record[1] not in records_dict:
+                records_dict[record[1]] = []
+            records_dict[record[1]].append(record[5:])
+    for keys, values in records_dict.items():
+        num_conf = 0
+        num_death = 0
+        num_recover = 0
+        for value in values:
+            num_conf += value[0]
+            num_death += value[1]
+            num_recover += value[2]
+        stats = [num_conf, num_death, num_recover]
+        records_dict.update({keys: stats})
+
+    records_animation.append(records_dict)
+    return records_animation

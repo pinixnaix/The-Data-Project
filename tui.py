@@ -150,6 +150,11 @@ def menu(variant=0):
             return None
 
 
+def country_region():
+    print("Please enter a country/region from records")
+    return str.lower(input())
+
+
 def total_records(num_records):
     f"""
         Task 5: Display the total number of records in the data set.

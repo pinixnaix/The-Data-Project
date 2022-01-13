@@ -120,7 +120,7 @@ def run():
 
             elif variant1 == 2:
                 tui.progress("Records retrieval", 0)
-                records = process.retrieve_records_obs_dates(covid_records)
+                records = process.retrieve_records_obs_dates(covid_records, tui.observation_dates())
                 tui.display_record(records)
                 tui.progress("Records retrieval", 100)
 
@@ -161,9 +161,10 @@ def run():
                 tui.progress("Visualisation bar chart", 100)
             if variant2 == 3:
                 tui.progress("Animated visualisation ", 0)
-                visual.animated_summary(records)
+                visual.animated_summary(covid_records)
                 tui.progress("Visualisation operation", 100)
-            tui.progress("Animated visualisation", 100)
+                tui.progress("Animated visualisation", 100)
+            tui.progress("visualisation operation", 100)
 
         # Task 25: Check if the user selected the option for exporting data.  If so, then do the following:
         # - Use the appropriate function in the module 'tui' to retrieve the type of data to be exported.
@@ -175,9 +176,22 @@ def run():
         #
         # To export the data, you should demonstrate the application of OOP principles including the concepts of
         # abstraction and inheritance.  You should create suitable classes with appropriate methods.
-        # You should use these to write the records (either all or only those for a specific country/region) to a JSON file.
-        # TODO: Your code here
+        # You should use these to write the records (either all or only those for a specific country/region)
+        # to a JSON file.
 
+        elif option == 3:
+            tui.progress("Export Data operation", 0)
+            variant3 = tui.menu(3)
+            if variant3 == 1:
+                tui.progress("Exporting All Data to a JSON file", 0)
+
+                tui.progress("Exporting All Data to a JSON file", 100)
+            if variant3 == 2:
+                country = tui.country_region()
+                tui.progress(f"Exporting Data for {country} to a JSON file", 0)
+
+                tui.progress(f"Exporting Data for {country} to a JSON file", 100)
+            tui.progress("Export Data operation", 100)
         # Task 26: Check if the user selected the option for exiting the program.
         # If so, then break out of the loop
         elif option == 4:
