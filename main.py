@@ -53,10 +53,10 @@ def run():
 
         except FileNotFoundError:
             tui.error("File not Found!!")
-            path = input("Please enter the correct path for the file")
+            path = tui.path()
         except StopIteration:
             tui.error("File is empty!!")
-            path = input("Please enter the correct path for the file")
+            path = tui.path()
 
     tui.total_records(process.records_loaded(covid_records))
     tui.progress('Data loading', 100)

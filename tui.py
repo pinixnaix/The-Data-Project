@@ -155,6 +155,11 @@ def country_region():
     return str.lower(input())
 
 
+def path():
+    print("Please enter the correct path for the file")
+    return input()
+
+
 def total_records(num_records):
     f"""
         Task 5: Display the total number of records in the data set.
