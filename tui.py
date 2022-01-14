@@ -160,21 +160,21 @@ def path():
     return input()
 
 
-def total_records(num_records):
+def total_records(records):
     f"""
         Task 5: Display the total number of records in the data set.
 
         The function should display a message in the following format:
 
-        "There are {num_records} records in the data set."
+        "There are {records} records in the data set."
 
-        Where {num_records} is the value of the parameter passed to this function
+        Where {records} is the value of the parameter passed to this function
 
         :param num_records: the total number of records in the data set
         :return: Does not return anything
         """
 
-    print(f"There are {num_records} records in the data set.")
+    print(f"There are {records} records in the data set.")
 
 
 def serial_number():
@@ -278,9 +278,12 @@ def display_records(records, cols=None):
         :param cols: A list of integer values that represent column indexes
         :return: Does not return anything
         """
-
-    for index in records[0].keys():
-        print(index)
-        country = records[0][index]
-        for record in country:
+    try:
+        for index in records[0].keys():
+            print(index)
+            country = records[0][index]
+            for record in country:
+                display_record(record, cols)
+    except AttributeError:
+        for record in records:
             display_record(record, cols)

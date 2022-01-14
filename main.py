@@ -121,7 +121,7 @@ def run():
             elif variant1 == 2:
                 tui.progress("Records retrieval", 0)
                 records = process.retrieve_records_obs_dates(covid_records, tui.observation_dates())
-                tui.display_record(records)
+                tui.display_records(records)
                 tui.progress("Records retrieval", 100)
 
             elif variant1 == 3:
