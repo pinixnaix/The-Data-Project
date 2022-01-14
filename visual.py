@@ -65,6 +65,8 @@ def observation_chart(records):
     global ax
     ax.bar(countries[:5], num_death[:5])
     ax.set_title("Top 5 Countries for number of deaths with Covid-19")
+    plt.ylabel("Number of Deaths", fontsize=18)
+    plt.xlabel("Countries", fontsize=18)
     plt.tight_layout()
     plt.show()
 
